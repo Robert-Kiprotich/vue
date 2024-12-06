@@ -13,6 +13,7 @@ import '@core/scss/template/index.scss'
 import '@styles/styles.scss'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
+import axiosInstance from './axiosInstance'
 
 loadFonts()
 
@@ -30,6 +31,7 @@ app.use(i18n)
 app.use(abilitiesPlugin, ability, {
   useGlobalProperties: true,
 })
+app.config.globalProperties.$axios = axiosInstance;
 
 // Mount vue app
 app.mount('#app')

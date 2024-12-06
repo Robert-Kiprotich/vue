@@ -1,0 +1,54 @@
+[
+    {
+        "id": 4,
+        "sms_text": "We have come to the end of the converation, reply with 1 to continue to agent menu",
+        "sms_phone": "0727647431",
+        "sms_direction": "OUTBOX",
+        "sms_status": 0,
+        "sms_sent_status": "",
+        "sms_schedule_date": "2024-12-03T00:34:26.569202",
+        "sms_cost": 0,
+        "sms_response": {},
+        "sms_messageid": "",
+        "sms_conv": 1
+    },
+    {
+        "id": 3,
+        "sms_text": "1",
+        "sms_phone": "0727647431",
+        "sms_direction": "INBOX",
+        "sms_status": 6,
+        "sms_sent_status": "",
+        "sms_schedule_date": "2024-12-03T00:34:26.541167",
+        "sms_cost": 0,
+        "sms_response": {},
+        "sms_messageid": "",
+        "sms_conv": 1
+    },
+    {
+        "id": 2,
+        "sms_text": "Hi, this service is currently not available, please call 116 or find us on other channels, thank you.",
+        "sms_phone": "",
+        "sms_direction": "OUTBOX",
+        "sms_status": 0,
+        "sms_sent_status": "",
+        "sms_schedule_date": "2024-12-03T00:34:10.562167",
+        "sms_cost": 0,
+        "sms_response": {},
+        "sms_messageid": "",
+        "sms_conv": 1
+    },
+    {
+        "id": 1,
+        "sms_text": "This is a test SMS",
+        "sms_phone": "0727647431",
+        "sms_direction": "INBOX",
+        "sms_status": 6,
+        "sms_sent_status": "",
+        "sms_schedule_date": "2024-12-03T00:34:10.522978",
+        "sms_cost": 0,
+        "sms_response": {},
+        "sms_messageid": "",
+        "sms_conv": 1
+    }
+]
