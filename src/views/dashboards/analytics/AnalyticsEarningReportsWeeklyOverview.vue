@@ -1,7 +1,9 @@
 <script setup>
-import VueApexCharts from 'vue3-apexcharts'
-import { useTheme } from 'vuetify'
-import { hexToRgb } from '@layouts/utils'
+import { hexToRgb } from '@layouts/utils';
+import { onMounted } from 'vue';
+import VueApexCharts from 'vue3-apexcharts';
+import { useTheme } from 'vuetify';
+import { useFetchSms } from '../../../composables/useFetchSms';
 
 const vuetifyTheme = useTheme()
 
@@ -120,6 +122,11 @@ const moreList = [
     value: 'Delete',
   },
 ]
+const { data, fetchData, isLoading, error } = useFetchSms();
+
+onMounted(fetchData);
+
+
 </script>
 
 <template>
@@ -144,14 +151,9 @@ const moreList = [
         >
           <div class="d-flex align-center gap-2 mb-2 pb-1 flex-wrap">
             <h4 class="text-4xl font-weight-medium">
-              46800
+               {{ data.length}}
             </h4>
-            <VChip
-              label
-              color="success"
-            >
-              +4.2%
-            </VChip>
+           
           </div>
 
           <p class="text-sm">
@@ -199,7 +201,7 @@ const moreList = [
               </h6>
             </div>
             <h4 class="text-h4 my-3">
-              {{ report.amount }}
+              {{ data.length }}
             </h4>
             <VProgressLinear
               :model-value="report.progress"

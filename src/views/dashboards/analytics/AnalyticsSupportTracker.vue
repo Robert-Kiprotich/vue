@@ -1,7 +1,9 @@
 <script setup>
-import VueApexCharts from 'vue3-apexcharts'
-import { useTheme } from 'vuetify'
-import { hexToRgb } from '@layouts/utils'
+import { hexToRgb } from '@layouts/utils';
+import VueApexCharts from 'vue3-apexcharts';
+import { useTheme } from 'vuetify';
+import { useFetchSms } from '../../../composables/useFetchSms';
+
 
 const vuetifyTheme = useTheme()
 const series = [85]
@@ -80,27 +82,31 @@ const supportTicket = [
   {
     avatarColor: 'primary',
     avatarIcon: 'tabler-ticket',
-    title: 'New Tickets',
+    title: 'Running Sessions',
     subtitle: '142',
   },
   {
     avatarColor: 'info',
     avatarIcon: 'tabler-circle-check',
-    title: 'Open Tickets',
+    title: 'Closed Sessions',
     subtitle: '28',
   },
   {
     avatarColor: 'warning',
     avatarIcon: 'tabler-clock',
-    title: 'Response Time',
+    title: 'Cancelled Sessions',
     subtitle: '1 Day',
   },
 ]
+const { data, fetchData, isLoading, error } = useFetchSms();
+
+onMounted(fetchData);
+
 </script>
 
 <template>
   <VCard
-    title="Support Tracker"
+    title="Chatbot Comleteness"
     subtitle="Last 7 Days"
   >
     <template #append>
@@ -119,10 +125,10 @@ const supportTicket = [
         >
           <div class="mb-6">
             <h4 class="text-h1">
-              164
+              {{ data.length }}
             </h4>
             <p>
-              Total Tickets
+              Total Sessions
             </p>
           </div>
 
@@ -135,7 +141,7 @@ const supportTicket = [
                 {{ ticket.title }}
               </VListItemTitle>
               <VListItemSubtitle class="text-disabled">
-                {{ ticket.subtitle }}
+                {{ data.length }}
               </VListItemSubtitle>
               <template #prepend>
                 <VAvatar

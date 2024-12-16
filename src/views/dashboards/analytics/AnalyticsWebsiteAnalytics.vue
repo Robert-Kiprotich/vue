@@ -1,9 +1,7 @@
 <script setup>
-import { VIcon } from 'vuetify/components/VIcon'
-import sliderBar1 from '@images/illustrations/sidebar-pic-1.png'
-import sliderBar2 from '@images/illustrations/sidebar-pic-2.png'
-import sliderBar3 from '@images/illustrations/sidebar-pic-3.png'
-
+import sliderBar1 from '@images/illustrations/sidebar-pic-1.png';
+import { VIcon } from 'vuetify/components/VIcon';
+import { useFetchSms } from '../../../composables/useFetchSms';
 const websiteAnalytics = [
   {
     name: 'Traffic',
@@ -27,51 +25,11 @@ const websiteAnalytics = [
       },
     ],
   },
-  // {
-  //   name: 'Spending',
-  //   slideImg: sliderBar2,
-  //   data: [
-  //     {
-  //       number: '12h',
-  //       text: 'Spend',
-  //     },
-  //     {
-  //       number: '182',
-  //       text: 'Order Size',
-  //     },
-  //     {
-  //       number: '127',
-  //       text: 'Order',
-  //     },
-  //     {
-  //       number: '23k',
-  //       text: 'Items',
-  //     },
-  //   ],
-  // },
-  // {
-  //   name: 'Revenue Sources',
-  //   slideImg: sliderBar3,
-  //   data: [
-  //     {
-  //       number: '268',
-  //       text: 'Direct',
-  //     },
-  //     {
-  //       number: '890',
-  //       text: 'Organic',
-  //     },
-  //     {
-  //       number: '622',
-  //       text: 'Referral',
-  //     },
-  //     {
-  //       number: '1.2k',
-  //       text: 'Campaign',
-  //     },
-  //   ],
-  //},
+  
 ]
+const { data, fetchData, isLoading, error } = useFetchSms();
+
+onMounted(fetchData);
 </script>
 
 <template>

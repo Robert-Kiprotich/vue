@@ -11,7 +11,7 @@ import * as demoCode from '@/views/demos/forms/tables/data-table/demoCodeDataTab
     <!-- 👉 Table Cell Slot  -->
     <VCol cols="12">
       <AppCardCode
-        title="Cell Slot"
+        title="Messages"
         :code="demoCode.cellSlot"
       >
         <DemoDataTableCellSlot />

@@ -19,11 +19,13 @@ const headers = [
 
 // Resolves status to color and text
 const resolveStatusVariant = (status) => {
-  if (status === 1) return { color: 'primary', text: 'Sent' };
-  if (status === 2) return { color: 'success', text: 'Success' };
-  if (status === 3) return { color: 'error', text: 'Rejected' };
-  if (status === 4) return { color: 'warning', text: 'User on Blacklist' };
-  return { color: 'info', text: 'Pending' };
+  switch (status) {
+    case 1: return { color: 'primary', text: 'Sent' };
+    case 2: return { color: 'success', text: 'Success' };
+    case 3: return { color: 'error', text: 'Rejected' };
+    case 4: return { color: 'warning', text: 'User on Blacklist' };
+    default: return { color: 'info', text: 'Pending' };
+  }
 };
 
 // Formats date to a readable format
@@ -40,18 +42,15 @@ const _data = ref([]);
 const fetchData = async () => {
   try {
     const response = await axiosInstance.get('/sms');
-    _data.value = response.data;
-    console.log(_data.value) // Populate the table data
+    _data.value = response.data; // Assuming response.data is an array of objects
   } catch (error) {
     console.error('Error fetching data:', error);
     _data.value = []; // Fallback to empty data
   }
 };
-console.log('Headers:', headers);
 
 // Fetch data on component mount
 onMounted(fetchData);
-
 </script>
 
 <template>
@@ -61,55 +60,55 @@ onMounted(fetchData);
     :items-per-page="5"
   >
     <!-- Sms Text -->
-    <template #items.sms_text="{ items }">
-      <span>{{ items.sms_text }}</span>
+    <template #items.sms_text="{ item }">
+      <span>{{ item.sms_text }}</span>
     </template>
 
     <!-- Sms Phone -->
-    <template #items.sms_phone="{ items }">
-      <span>{{ items.sms_phone || 'N/A' }}</span>
+    <template #items.sms_phone="{ item }">
+      <span>{{ item.sms_phone || 'N/A' }}</span>
     </template>
 
     <!-- Sms Direction -->
-    <template #items.sms_direction="{ items }">
-      <span>{{ items.sms_direction }}</span>
+    <template #items.sms_direction="{ item }">
+      <span>{{ item.sms_direction }}</span>
     </template>
 
     <!-- Sms Status -->
     <template #items.sms_status="{ item }">
-      <span :class="resolveStatusVariant(items.sms_status).color">
-        {{ resolveStatusVariant(items.sms_status).text }}
+      <span :class="resolveStatusVariant(item.sms_status).color">
+        {{ resolveStatusVariant(item.sms_status).text }}
       </span>
     </template>
 
     <!-- Sms Sent Status -->
-    <template #items.sms_sent_status="{ items }">
-      <span>{{ items.sms_sent_status || 'N/A'   }}</span>
+    <template #items.sms_sent_status="{ item }">
+      <span>{{ item.sms_sent_status || 'N/A' }}</span>
     </template>
 
     <!-- Sms Schedule Date -->
-    <template #items.sms_schedule_date="{ items }">
-      <span>{{ formatDate(items.sms_schedule_date) }}</span>
+    <template #items.sms_schedule_date="{ item }">
+      <span>{{ formatDate(item.sms_schedule_date) }}</span>
     </template>
 
     <!-- Sms Cost -->
-    <template #items.sms_cost="{ items }">
-      <span>{{ items.sms_cost || 0 }}</span>
+    <template #items.sms_cost="{ item }">
+      <span>{{ item.sms_cost || 0 }}</span>
     </template>
 
     <!-- Sms Response -->
-    <template #items.sms_response="{ items}">
+    <template #items.sms_response="{ item }">
       <span>{{ JSON.stringify(item.sms_response) }}</span>
     </template>
 
     <!-- Sms Message ID -->
-    <template #items.sms_messageid="{ items}">
-      <span>{{ items.sms_messageid || 'N/A' }}</span>
+    <template #items.sms_messageid="{ item }">
+      <span>{{ item.sms_messageid || 'N/A' }}</span>
     </template>
 
     <!-- Sms Conversation -->
-    <template #items.sms_conv="{ items }">
-      <span>{{ items.sms_conv }}</span>
+    <template #items.sms_conv="{ item }">
+      <span>{{ item.sms_conv }}</span>
     </template>
   </VDataTable>
 </template>

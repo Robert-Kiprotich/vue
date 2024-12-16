@@ -2,11 +2,11 @@
   <VCard>
     <VCardText class="pa-5">
       <div class="d-flex align-center justify-space-between">
-        <span class="text-sm text-disabled">Sales Overview</span>
-        <span class="text-success">+18.2%</span>
+        <span class="text-sm text-disabled">Analytics</span>
+        <span class="text-success"></span>
       </div>
       <h4 class="text-h4">
-        $42.5k
+        42.5k visits
       </h4>
     </VCardText>
 
@@ -23,14 +23,14 @@
             >
               <VIcon
                 size="18"
-                icon="tabler-shopping-cart"
+                icon="tabler-message"
               />
             </VAvatar>
 
-            <span>Order</span>
+            <span>Responses</span>
           </div>
           <h5 class="text-h5">
-            62.2%
+            10k 
           </h5>
           <span class="text-sm text-disabled">6,440</span>
         </VCol>
